@@ -1,0 +1,3 @@
+server:
+  port: 9090
+message: "Config loaded from GitHub for service1"
