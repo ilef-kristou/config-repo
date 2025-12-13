@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: product-microservice
+  cloud:
+    config:
+      uri: http://localhost:8888
+      import: "optional:configserver:"
+      import-check:
+        enabled: false
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health
+  tracing:
+    sampling:
+      probability: 1.0
+zipkin:
+  endpoint: http://localhost:9411/api/v2/spans
+resilience4j:
+  retry:
+    instances:
+      myRetry:
+        max-attempts: 3
+        wait-duration: 500ms
+  rate-limiter:
+    instances:
+      myRateLimiter:
+        limit-for-period: 5
+        limit-refresh-period: 1s
+        timeout-duration: 500ms
