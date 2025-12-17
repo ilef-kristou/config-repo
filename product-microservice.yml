@@ -61,3 +61,21 @@ ribbon:
   eureka:
     enabled: false
   listOfServers: localhost:8083,localhost:8084
+
+
+
+
+resilience4j:
+  retry:
+    instances:
+      myRetry:
+        max-attempts: 3
+        wait-duration: 500ms
+
+  rate-limiter:
+    instances:
+      myRateLimiter:
+        limit-for-period: 5
+        limit-refresh-period: 1s
+        timeout-duration: 500ms
+
