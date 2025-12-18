@@ -71,11 +71,18 @@ resilience4j:
       myRetry:
         max-attempts: 3
         wait-duration: 500ms
+        register-health-indicator: false  # Ajouté
 
   ratelimiter:
     instances:
       myRateLimiter:
         limit-for-period: 5
         limit-refresh-period: 1s
-        timeout-duration: 500ms
+        timeout-duration: 10000ms  # Changé: 10 secondes au lieu de 500ms
+        register-health-indicator: false  # Ajouté
+        allow-health-indicator-to-fail: true  # Ajouté
 
+  circuitbreaker:
+    instances:
+      productmicroService:
+        register-health-indicator: false  # Ajouté
