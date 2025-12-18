@@ -76,4 +76,4 @@ resilience4j:
       myRateLimiter:
         limit-for-period: 5
         limit-refresh-period: 1s
-        timeout-duration: 2ms
+        timeout-duration: 0ms
